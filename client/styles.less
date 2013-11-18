@@ -1,0 +1,32 @@
+.top-bar {
+    background-color:#00AEFF;
+    .breadcrumbs {
+        background-color:transparent;
+        border-color:transparent;
+        font-size:1.5em;
+        li:before {
+            color: #777;
+        }
+        li:nth-child(2) {
+            &:before {
+                content: "";                
+            }
+        }
+        a, a > span {
+            color:#fff;
+        }
+        .current a {
+            color: #777;
+        }        
+    }
+}
+
+
+@media screen and (max-width:480px){
+    .top-bar {
+        .breadcrumbs {
+            margin-top:5px;
+            font-size: 1.1em;
+        }
+    }
+}
