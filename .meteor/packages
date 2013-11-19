@@ -9,7 +9,7 @@ insecure
 preserve-inputs
 foundation
 less
-font-awesome
 accounts-ui
 accounts-google
 iron-router
+font-awesome

@@ -1,32 +1,277 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@defaultColor: #111;
+@hoverColor: #777;
+
+html, body {
+    color: @defaultColor;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
+    color: @hoverColor;
+    margin-bottom: 0;
+}
+
+p, input, textarea {
+    font-family: Calibri;
+}
+
+.treeview {
+    float: left; //Prevent 100% width
+    .user-select; //Prevent accidental selection on dbl click to fast expand/collapse
+
+    //Fade back to default
+    &:hover input ~ label:before,
+        &.hover input ~ label:before{
+        opacity: 1.0;
+        .transition-duration(0.5s);
+    }
+
+    ul {
+        .transition-duration;
+        list-style: none;
+        padding-left: 1em;
+
+        li {
+            //Fade back to default
+            display:block;
+            a{
+                font-size:1.5em;
+                padding: .5em;
+                color: @defaultColor;
+                display:block;
+                .transition-property(color);
+                .transition-duration;
+
+                //Highlight on hover
+                &:hover {
+                    color: @hoverColor;
+                    background:#eee;
+                    .transition-duration(0.3s);
+                }
+            }
+        }
+    }
+
+    //Hide checkboxes
+    input{
+        display: none;
+
+        //Hide collapsed branches
+        &:checked ~ ul {
+            display: none;
+        }
+
+        //Show pointer on collapsible rows
+        & ~ label { 
+            display:block;
+            font-size:1.2em;
+            cursor: pointer;
+        }
+
+        //Expanded branch
+        & ~ label:before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            margin-left: -.5em;
+            margin-top: 1em;
+            border-width: 7px;
+            border-style: solid;
+            border-top-color: transparent;
+            border-right-color: @defaultColor;
+            border-bottom-color: @defaultColor;
+            border-left-color: transparent;
+            opacity: 0.0;
+            .transition-property(opacity);
+            .transition-duration;
+        }
+
+        //Collapsed branch
+        &:checked ~ label:before {
+            margin-left: -0.8em;
+            border-width: 8px;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: @defaultColor;
+        }
+    }
+}
+
 .top-bar {
     background-color:#00AEFF;
-    .breadcrumbs {
-        background-color:transparent;
-        border-color:transparent;
-        font-size:1.5em;
-        li:before {
-            color: #777;
-        }
-        li:nth-child(2) {
-            &:before {
-                content: "";                
+    ul {
+        padding:0;  
+        padding-top: 0.5625em;
+        &.breadcrumbs {
+            background-color:transparent;
+            border-color:transparent;
+            font-size:1.5em;
+            margin:0;
+            li:before {
+                color: #333;
             }
+            li:nth-child(2) {
+                &:before {
+                    content: "";                
+                }
+            }     
         }
         a, a > span {
             color:#fff;
         }
         .current a {
-            color: #777;
-        }        
+            color: #333;
+        }   
     }
 }
+
+#showRight{
+    position:fixed;
+    top:55px;
+    font-size:2em;
+    right:20px;
+    color:#999;
+    z-index:2000;
+    text-shadow: 1px 1px 1px #444;
+    cursor: pointer;
+    opacity:.1;
+    &:hover {
+        text-shadow: 1px 1px 1px transparent;
+    }
+} 
+.cbp-spmenu {
+    background: #47a3da;
+    position: fixed;
+    width: 240px;
+    height: auto;
+    top: 0;
+    right:0;
+    z-index: 1000;    
+    margin-top:43px;
+    opacity:.9;
+    h3 {
+        color: #afdefa;
+        font-size: 1.9em;
+        padding: 10px;
+        margin: 0;
+        font-weight: 300;
+        background: #0d77b6;
+    }
+
+    a {
+        display: block;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 300;
+        border-bottom: 1px solid #258ecd;
+        padding: 1em;        
+        &:hover {
+            background: #258ecd;
+        }    
+    }    
+    &.cbp-spmenu-open {
+        right: 0px;
+    }
+}
+
+
+
+
+
+.subpage {
+    font-variant: small-caps;
+    margin:50px;
+    min-height:50px;
+    padding:10px 0;
+    font-size:1.2em;
+    color:#666;
+    font-family:times;    
+}
+.centered {
+    margin:0 auto;
+    text-align: center;
+}
+
+
+.wrapper { 
+    background:#EFEFEF; 
+    /*box-shadow: 1px 1px 10px #999;*/ 
+    margin: auto auto 20px auto; 
+    text-align: center; 
+    position: relative;
+}
+.scrolls { 
+    /*overflow-x: scroll;*/
+    overflow-y: hidden;
+    white-space:nowrap;
+    height: 45px;
+} 
+.imageDiv { 
+    margin: 0;
+    height: 80px;
+    padding-top:3px;
+    img { 
+        display:inline-block;
+        *display:inline;/* For IE7*/
+        *zoom:1;/* For IE7*/
+        vertical-align:top;
+        margin: 2px;
+        max-height: 50px;
+        cursor: pointer;
+        /*float:left;*/
+    }
+}
+
+
 
 
 @media screen and (max-width:480px){
     .top-bar {
         .breadcrumbs {
-            margin-top:5px;
-            font-size: 1.1em;
+            /*margin-top:5px;*/
+            font-size: 1.3em;
         }
     }
+}
+
+@media screen and (max-width:960px){
+
+    .cbp-spmenu {
+        right: -240px;        
+    }
+    #showRight {
+        opacity:.6;
+    }
+}
+
+
+
+//Mixins
+.transition-duration(@duration: 1s) {
+    -webkit-transition-duration: @duration;
+    -moz-transition-duration: @duration;
+    -ms-transition-duration: @duration;
+    -o-transition-duration: @duration;
+    transition-duration: @duration;
+}
+
+.transition-property(@property) {
+    -webkit-transition-property: @property;
+    -moz-transition-property: @property;
+    -ms-transition-property: @property;
+    -o-transition-property: @property;
+    transition-property: @property;
+}
+
+.user-select(@select: none) {
+    -webkit-user-select: @select;
+    -moz-user-select: @select;
+    -ms-user-select: @select;
+    -o-user-select: @select;
+    user-select: @select;
 }
