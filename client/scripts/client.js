@@ -3,7 +3,7 @@ Meteor.startup(function() {
 });
 
 Template.page.events({
-    'click #showRight' : function(){
+    'click #showLeft' : function(){
         $('.cbp-spmenu').toggleClass('cbp-spmenu-open');
     }
 });
