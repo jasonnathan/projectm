@@ -27,9 +27,9 @@ The magic happens in each *child-item* where one can:
 
     * Each issue has a status of `open`, `closed` or `wontfix`. `wontfix` means that an issue is abandoned either because it is irrelevant or not constructive.
 
-    * The above tags can and should be complemented by other unique tags that describe the each module further so a search can be more specific.
+    * The above tags can and should be complemented by other unique tags that describe each module further so a search can be more specific.
     
-* See a timeline of each page that can be further broken down to see targets set on per-issue basis (if applicable)
+* See a timeline of each page that can be further broken down - to see timelines set on a per-issue basis (if applicable)
 
     * These timelines are organised by milestones, likely indicative of a scheduled release that are named and versioned. For example `Alpha 1`, `Beta 2`, `RC 1` etc. Each milestone also has a description of what must be accomplished so everyone in a team in never out-of-the-loop, in a manner of speaking.
 
