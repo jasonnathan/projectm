@@ -1,5 +1,5 @@
 ##Project M 
-an experimental hierarchical approach to Project Management specifically targeted at applications with multiple screens / pages. The top level of this hierarchy comprises the main navigation in an application. The second level thereafter consists of its *child-items*. For example:
+An experimental hierarchical approach to Project Management - specifically targeted at applications with multiple screens / pages. The top level of this hierarchy comprises the main navigation in an application. The second level thereafter consists of its *child-items*. For example:
 
 * Home `<= Top Level Navigation`
 
