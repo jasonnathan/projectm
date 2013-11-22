@@ -5,9 +5,9 @@ An experimental hierarchical approach to Project Management - specifically targe
 
 * User  `<= Top Level Navigation`
 
-    * Dashboard `<= Second Level (subpage)`
+    * Dashboard `<= Second Level (*child-item*)`
 
-    * Settings `<= Second Level (subpage)`
+    * Settings `<= Second Level (*child-item*)`
 
 ...etc
 
