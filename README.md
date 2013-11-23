@@ -15,23 +15,23 @@ Of course, each *child-item* on the second level will likely need more levels. T
 
 The magic happens in each *child-item* where one can:
 
-1. Read an overview of the purpose and functionality of this page.
+* Read an overview of the purpose and functionality of this page.
 
-2. Contribute to an on-going discussion between team members.
+* Contribute to an on-going discussion between team members.
 
-3. View or Upload mockups, screenshots and other related media.
+* View or Upload mockups, screenshots and other related media.
 
-4. See a timeline of each page that can be further broken down - to see timelines set on a per-issue basis (if applicable) 
+* See a timeline of each page that can be further broken down - to see timelines set on a per-issue basis (if applicable) 
 
-5. View a hierarchical list of issues that are further organised by tags:
+    * These timelines are organised by milestones, likely indicative of a scheduled release that are named and versioned. For example `Alpha 1`, `Beta 2`, `RC 1` etc. Each milestone also has a description of what must be accomplished so everyone in a team in never out-of-the-loop, in a manner of speaking.
+
+* View a hierarchical list of issues that are further organised by tags:
 
     * Issues are modular, meaning the top level of an issue is an item tagged `section` which represent modules (described above) and its children are tasks, ideas or problems tagged `feature`, `review` or `bug` respectively.
 
     * Each issue has a status of `open`, `closed` or `wontfix`. `wontfix` means that an issue is abandoned either because it is irrelevant or not constructive.
 
     * The above tags can and should be complemented by other unique tags that describe each module further so a search can be more specific.
-
-    * These timelines are organised by milestones, likely indicative of a scheduled release that are named and versioned. For example `Alpha 1`, `Beta 2`, `RC 1` etc. Each milestone also has a description of what must be accomplished so everyone in a team in never out-of-the-loop, in a manner of speaking.
 
 
 Finally, one can see the people involved including their roles, assignments and delegated tasks.
