@@ -15,13 +15,13 @@ Of course, each *child-item* on the second level will likely need more levels. T
 
 The magic happens in each *child-item* where one can:
 
-* Read an overview of the purpose and functionality of this page.
+1. Read an overview of the purpose and functionality of this page.
 
-* Contribute to an on-going discussion between team members.
+2. Contribute to an on-going discussion between team members.
 
-* View or Upload mockups, screenshots and other related media.
+3. View or Upload mockups, screenshots and other related media.
 
-* View a hierarchical list of issues that are further organised by tags:
+4. View a hierarchical list of issues that are further organised by tags:
 
     * Issues are modular, meaning the top level of an issue is an item tagged `section` which represent modules (described above) and its children are tasks, ideas or problems tagged `feature`, `review` or `bug` respectively.
 
@@ -29,21 +29,21 @@ The magic happens in each *child-item* where one can:
 
     * The above tags can and should be complemented by other unique tags that describe each module further so a search can be more specific.
     
-* See a timeline of each page that can be further broken down - to see timelines set on a per-issue basis (if applicable)
+5. See a timeline of each page that can be further broken down - to see timelines set on a per-issue basis (if applicable)
 
     * These timelines are organised by milestones, likely indicative of a scheduled release that are named and versioned. For example `Alpha 1`, `Beta 2`, `RC 1` etc. Each milestone also has a description of what must be accomplished so everyone in a team in never out-of-the-loop, in a manner of speaking.
 
-* Finally, one can see the people involved including their roles, assignments and delegated tasks.
+6. Finally, one can see the people involved including their roles, assignments and delegated tasks.
 
 
 
 **Navigation & Organisation (Front-End / UI)**
 
-* Entering the site presents a **Login** screen as each project is assumed private.
+1. Entering the site presents a **Login** screen as each project is assumed private.
 
-* Once authenticated, a user is presented with a list of top level **Pages** with each item expandable to reveal its *child-item* (second level).
+2. Once authenticated, a user is presented with a list of top level **Pages** with each item expandable to reveal its *child-item* (second level).
 
-* Clicking on a *child-item* brings a user to another page where his/her navigational options are:
+3. Clicking on a *child-item* brings a user to another page where his/her navigational options are:
 
     * An **Overview** page complemented by an on-going discussion. 
 
@@ -64,25 +64,25 @@ The magic happens in each *child-item* where one can:
 
 **Internal Functionality (Backend)**
 
-* Authentication provider will be a Google Apps account. (currently)
+1. Authentication provider will be a Google Apps account. (currently)
 
-* Simple roles management.
+2. Simple roles management.
 
-* Email Notifications
+3. Email Notifications
 
-* Each project is co-related to a Github Project with the same name.
+4. Each project is co-related to a Github Project with the same name.
 
-* Issues created on this Application automatically create Issues on Github. Updates are reflected both ways.
+5. Issues created on this Application automatically create Issues on Github. Updates are reflected both ways.
 
 **Future Considerations**
 
-* A WYSIWYG text editor to edit content.
+1. A WYSIWYG text editor to edit content.
 
-* A complementary mobile app.
+2. A complementary mobile app.
 
-* The ability to create new project - very important addition.
+3. The ability to create new project - very important addition.
 
-* Portability of the application.
+4. Portability of the application.
 
 
 **Motivation for this project**
