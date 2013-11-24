@@ -1,63 +1,79 @@
+Pages = new Meteor.Collection('pages');
+
+
+
 Router.configure({
-  layoutTemplate: 'layout'
+    layoutTemplate: 'layout',
+//    loadingTemplate: 'loading',
+//    notFoundTemplate: 'not_found',
+    yieldTemplates: {
+        topbar: {to: 'topbar'},
+        breadcrumbs: {to: 'breadcrumbs'}
+    }
 });
 
-Router.map(function () {
-  /**
-   * The route's name is "home"
-   * The route's template is also "home"
-   * The default action will render the home template
-   */
-  this.route('home', {
-    path: '/',
-    template: 'page'
-  });
-
-  /**
-   * The route's name is "posts"
-   * The route's path is "/posts"
-   * The route's template is inferred to be "posts"
-   */
-  this.route('posts', {
-    path: '/posts'
-  });
-
-  this.route('post', {
-    path: '/posts/:_id',
-
-    load: function () {
-      // called on first load
+PagesController = RouteController.extend({
+    template: 'pages',
+    waitOn: function() {
+        return Meteor.subscribe('PagesList')
     },
+    action: function() {
+        Session.set('crumbs', null);
+        this.render();
+    },
+    data: {
+        pages: function() {
+            var pages = Pages.find().fetch();
+            //return pages
 
-    // before hooks are run before your action
-    before: [
-      function () {
-        this.subscribe('post', this.params._id).wait();
-        this.subscribe('posts'); // don't wait
-      },
-
-      function () {
-        // we're done waiting on all subs
-        if (this.ready()) {
-          NProgress.done();
-        } else {
-          NProgress.start();
-          this.stop(); // stop downstream funcs from running
+            _.each(pages, function(page, index) {
+                if (page.parent) {
+                    var parent = _.findWhere(pages, {slug: page.parent.slug}),
+                    parentIndex = pages.indexOf(parent);
+                    if (!parent.children) {
+                        parent.children = [];
+                    }
+                    parent.children.push(page);
+                    delete pages[index];
+                    pages[parentIndex] = parent;
+                }
+            });
+            return pages;
         }
-      }
-    ],
-
-    action: function () {
-      var params = this.params; // including query params
-      var hash = this.hash;
-      var isFirstRun = this.isFirstRun;
-
-      this.render(); // render all
-      this.render('specificTemplate', {to: 'namedYield'});
-    },
-
-    unload: function () {
-      // before a new route is run
     }
-  });
+});
+
+
+Router.map(function() {
+    /**
+     * The route's name is "home"
+     * The route's template is also "home"
+     * The default action will render the home template
+     */
+    this.route('home', {
+        path: '/',
+        controller: PagesController
+    });
+
+    this.route('page', {
+        path: '/page/:slug',
+        template: 'page',
+        waitOn: function() {
+            return Meteor.subscribe('PagesList')
+        },
+        data: function() {
+            return Pages.findOne({slug: this.params.slug});
+        },
+        action: function() {
+            var page = this.getData(), c = [];
+            if (typeof page === 'object') {
+                if (page.parent) {
+                    c.push(page.parent);
+                }
+                c.push(page);
+            }
+            Session.set('crumbs', c);
+            this.render();
+        }
+    });
 });

@@ -2,6 +2,7 @@
   "packages": {
     "foundation": {},
     "iron-router": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "iron-router-progress": {}
   }
 }

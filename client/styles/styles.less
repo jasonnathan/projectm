@@ -18,102 +18,31 @@ p, input, textarea {
     font-family: Calibri;
 }
 
-.treeview {
-    float: left; //Prevent 100% width
-    .user-select; //Prevent accidental selection on dbl click to fast expand/collapse
-
-    //Fade back to default
-    &:hover input ~ label:before,
-        &.hover input ~ label:before{
-        opacity: 1.0;
-        .transition-duration(0.5s);
-    }
-
-    ul {
-        .transition-duration;
-        list-style: none;
-        padding-left: 1em;
-
-        li {
-            //Fade back to default
-            display:block;
-            a{
-                font-size:1.5em;
-                padding: .5em;
-                color: @defaultColor;
-                display:block;
-                .transition-property(color);
-                .transition-duration;
-
-                //Highlight on hover
-                &:hover {
-                    color: @hoverColor;
-                    background:#eee;
-                    .transition-duration(0.3s);
-                }
-            }
-        }
-    }
-
-    //Hide checkboxes
-    input{
-        display: none;
-
-        //Hide collapsed branches
-        &:checked ~ ul {
-            display: none;
-        }
-
-        //Show pointer on collapsible rows
-        & ~ label {
-            display:block;
-            font-size:1.2em;
-            cursor: pointer;
-        }
-
-        //Expanded branch
-        & ~ label:before {
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            margin-left: -.5em;
-            margin-top: 1em;
-            border-width: 7px;
-            border-style: solid;
-            border-top-color: transparent;
-            border-right-color: @defaultColor;
-            border-bottom-color: @defaultColor;
-            border-left-color: transparent;
-            opacity: 0.0;
-            .transition-property(opacity);
-            .transition-duration;
-        }
-
-        //Collapsed branch
-        &:checked ~ label:before {
-            margin-left: -0.8em;
-            border-width: 8px;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-            border-left-color: @defaultColor;
-        }
-    }
-}
-
-.top-bar {
+.main-bar {
     background-color:#00AEFF !important;
+    display:block;
+    position:relative;
+    height:2.5em;
+    width:100%;
+    font-size:1.2em;
+    z-index:2;
+    .row {
+        padding:0;
+    margin-top:3px;
+        > .columns {
+            padding:0;
+        }
+    }
+
     ul {
-        background-color:#00AEFF !important;
-        z-index:4;
+        padding: 0.33em 0;
         &.breadcrumbs {
             background-color:transparent;
             border-color:transparent;
             font-size:1.5em;
-            padding: 0.33em 0.2em 0.33em;
             border-radius:none;
             margin:0;
+            width:100%;
             li:before {
                 color: #333;
             }
@@ -128,10 +57,65 @@ p, input, textarea {
                 color:#fff !important;
                 background:transparent !important;
             }
+            .current a {
+                color: #333;
+            }
         }
+    }
 
-        .current a {
-            color: #333;
+    .fixed-right {
+        position:absolute;
+        right:0;
+        top:5px;
+        padding: 0.33em 0.2em 0;
+        cursor: pointer;
+        min-width:50px;
+        a {
+            color:#fff !important;
+            &#account-link {
+                /*position: relative;*/
+                height: 100%;
+                width: 100%;
+                border-left: 1px solid #1D93DA;
+                padding: .3em;
+                display:block;
+                i {
+                    width: 1em;
+                    height: 1em;
+                    display:block;
+                    cursor: pointer;
+                }
+            }
+        }
+        ul.dropdown {
+            position:absolute;
+            background-color:#00AEFF !important;
+            top:40px;
+            right:-10px;
+            height:auto;
+            width:240px;
+            display:block;
+            border-bottom-right-radius: 10%;
+            border-bottom-left-radius: 10%;
+            opacity:0;
+            display:none;
+            .transition-duration(.2s);
+            li {
+                border-bottom: 1px solid #1D93DA;
+                border-top: 1px solid #83C6EE;
+                &:first-child {border-top:none}
+                &:last-child {border-bottom:none}
+                display:block;
+                a {
+                    padding: .5em;
+                    display:block;
+                    margin:0;
+                }
+            }
+            &.cbp-spmenu-open {
+                opacity:1 !important;
+                display:block !important;
+            }
         }
     }
 }
@@ -141,10 +125,11 @@ p, input, textarea {
     top:55px;
     font-size:2em;
     left:10px;
-    color:#aaa;
-    z-index:3;
-    text-shadow: 1px 1px 1px #444;
+    color:#ddd;
+    z-index:2;
+    text-shadow: 1px 1px 1px #aaa;
     cursor: pointer;
+    .transition-duration(.2s);
     &:hover {
         text-shadow: 1px 1px 1px transparent;
     }
@@ -159,6 +144,7 @@ p, input, textarea {
     z-index: 2;
     margin-top:95px;
     opacity:.9;
+    .transition-duration(.2s);
     h3 {
         color: #afdefa;
         font-size: 1.9em;
@@ -173,7 +159,8 @@ p, input, textarea {
         color: #fff;
         font-size: 1.1em;
         font-weight: 300;
-        border-bottom: 1px solid #258ecd;
+        border-bottom: 1px solid #218BCA;
+        border-top: 1px solid #83C6EE;
         padding: 1em;
         &:hover {
             background: #258ecd;
@@ -240,6 +227,7 @@ p, input, textarea {
         .breadcrumbs {
             /*margin-top:5px;*/
             font-size: 1.3em;
+            max-width:79%;
         }
     }
 }

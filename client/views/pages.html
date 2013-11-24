@@ -1,0 +1,22 @@
+<template name="pages">
+    <div class="row">
+        <ul class="columns large-12">
+            {{#if pages}}
+            {{#each pages}}
+            <li>
+                <h2><a class="top-level-page" href="{{path}}">{{name}}</a></h2>
+                {{#if children}}
+                <ul style="background:#eee">
+                    {{#each children}}
+                    <li>
+                        <h3><a class="child-level-page" href="{{path}}">{{name}}</a></h3>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{/if}}
+            </li>
+            {{/each}}
+            {{/if}}
+        </ul>
+    </div>
+</template>
